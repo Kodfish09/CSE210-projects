@@ -18,7 +18,7 @@ class Program
             string response = Console.ReadLine();
 
             if (response == "1") {
-                journal.entries.Add(newEntry());
+                journal._entries.Add(newEntry());
             }
             if (response == "2") {
                 Display(journal);
@@ -55,16 +55,16 @@ class Program
         string entryText = Console.ReadLine();
 
         Entry currEntry = new Entry();
-        currEntry.date = DateTime.Now.ToShortDateString();
-        currEntry.prompt = currPrompt;
-        currEntry.text = entryText;
+        currEntry._date = DateTime.Now.ToShortDateString();
+        currEntry._prompt = currPrompt;
+        currEntry._text = entryText;
 
         return currEntry;
     }
 
     static void Display(Journal j) {
-        foreach (Entry entry in j.entries) {
-            Console.WriteLine($"\nDate: {entry.date} - Prompt: {entry.prompt}\n{entry.text}");
+        foreach (Entry entry in j._entries) {
+            Console.WriteLine($"\nDate: {entry._date} - Prompt: {entry._prompt}\n{entry._text}");
         }
         Console.WriteLine("\nHit Enter when finished. ");
         Console.ReadLine();
@@ -104,12 +104,12 @@ class Program
                 Entry entry = new Entry();
                 string[] parts = line.Split("~|~");
 
-                entry.date = parts[0];
-                entry.prompt = parts[1];
-                entry.text = parts[2];
+                entry._date = parts[0];
+                entry._prompt = parts[1];
+                entry._text = parts[2];
 
                 //Adds the entry into the journal
-                journal.entries.Add(entry);
+                journal._entries.Add(entry);
             }
 
             Console.WriteLine("Your journal has been loaded. Press Enter to achknowledge. ");
@@ -128,8 +128,8 @@ class Program
         string filename = "-339-"+Console.ReadLine()+".txt";
 
         using (StreamWriter outputFile = new StreamWriter(filename)) {
-            foreach (Entry entry in j.entries) {
-                outputFile.WriteLine($"{entry.date}~|~{entry.prompt}~|~{entry.text}");
+            foreach (Entry entry in j._entries) {
+                outputFile.WriteLine($"{entry._date}~|~{entry._prompt}~|~{entry._text}");
             }
         }
 
@@ -172,12 +172,12 @@ class Program
 
 public class Entry
 {
-    public string date;
-    public string prompt;
-    public string text;
+    public string _date;
+    public string _prompt;
+    public string _text;
 }
 
 public class Journal
 {
-    public List<Entry> entries = new List<Entry>();
+    public List<Entry> _entries = new List<Entry>();
 }
