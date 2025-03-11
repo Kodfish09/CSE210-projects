@@ -23,7 +23,7 @@ class Program
             } else if (action > 5) {
                 user.cheat(action);
             } else {
-                Console.WriteLine("Goodbye!");
+                Console.WriteLine("Farewell!");
                 con = false;
             }
         }
