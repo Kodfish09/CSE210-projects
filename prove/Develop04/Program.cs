@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
+        string sMsg = "";
+        string fMsg = "";
+
+        Activity bActy = new Activity();
+        bActy.Wait(3);
     }
 }
