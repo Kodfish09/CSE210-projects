@@ -3,7 +3,7 @@ using System;
 class Activity
 {
     private string start_message;
-    private string finish_message;
+    private protected string finish_message;
 
     public void setMessages(string sMsg, string fMsg) {
         start_message = sMsg;
