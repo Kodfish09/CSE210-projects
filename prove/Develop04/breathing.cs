@@ -1,25 +1,30 @@
 using System;
 
-class Breathing : Activity
+public class Breathing : Activity
 {
-    private string description = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
-
-    public string breathe(int duration) {
-        Console.WriteLine(duration);
-        Console.WriteLine(description);
-        for (int i = duration; i >= 0; i=i) {
-            if (i % 2 == 1) {
-                Console.WriteLine("Breathe in...");
-            } else {
-                Console.WriteLine("Breathe out...");
-            }
-            
-            for (int j = 0; j <= 3; j++) {
-                Thread.Sleep(1000);
-                Console.WriteLine(i);
-                i -= 1;
-            }
+    public string GetType() {
+        return "Breathing";
+    }
+    public void Begin() {
+        Console.WriteLine(sMsg);
+        Wait(1);
+        Console.WriteLine("Breathing Activity\n This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
+        Wait(1);
+        Console.WriteLine("How many seconds would you like to do this activity?");
+        int time = int.Parse(Console.ReadLine());
+        int reps = 0;
+        for (int i = 0; i < time; i++) {
+            Console.WriteLine("Breath in...");
+            Wait(5);
+            i += 5;
+            Console.WriteLine("Breath out...");
+            Wait(5);
+            i += 5;
+            reps += 1;
         }
-        return null;
+        Console.WriteLine(fMsg);
+        Wait(2);
+        Console.WriteLine($"You have successfully performed the Breathing Activity for {reps * 10} seconds.");
+        Wait(3);
     }
 }
